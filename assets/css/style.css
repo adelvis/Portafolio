@@ -596,6 +596,26 @@ section .container {
   border: 2px solid #5D9DB0;
 }
 
+/* Boton de descarga de curriculum */
+
+.resume a.button {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    display: block;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    border-color: #5D9DAF;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.resume a:hover.button{
+  color: #fff;
+}
+.resume .container-button {
+  display: flex;
+  justify-content: flex-start;
+}
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
