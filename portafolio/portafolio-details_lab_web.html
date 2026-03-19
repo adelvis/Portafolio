@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Detalles - WordPress Lab (Pruebas)</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <style>
+    body { background-color: #000 !important; color: #fff !important; font-family: 'Raleway', sans-serif; margin: 0; }
+    #main { padding-top: 80px; }
+    
+    .portfolio-info { 
+        background: #111 !important; 
+        padding: 30px; 
+        border-radius: 10px; 
+        border-left: 5px solid #5D9DAF; 
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); 
+    }
+    .portfolio-info h3 { color: #5D9DAF; border-bottom: 1px solid #333; padding-bottom: 10px; font-size: 22px; margin: 0 0 20px 0; }
+    .portfolio-info ul { list-style: none; padding: 0; }
+    .portfolio-info ul li { margin-bottom: 12px; font-size: 14px; color: #ddd; }
+    .portfolio-info ul li strong { color: #5D9DAF; }
+    
+    .portfolio-description h2 { color: #fff; font-size: 26px; margin-top: 25px; font-weight: 700; }
+    .portfolio-description p { color: #ccc; line-height: 1.6; font-size: 15px; }
+    
+    .btn-back { 
+        display: inline-block; 
+        background: #5D9DAF; 
+        color: #fff; 
+        padding: 10px 25px; 
+        border-radius: 5px; 
+        text-decoration: none; 
+        font-weight: bold; 
+        margin-top: 10px; 
+        transition: 0.3s; 
+    }
+    .btn-back:hover { background: #fff; color: #000; }
+
+    /* CONTENEDOR FIJO - EVITA DESPLAZAMIENTOS */
+    .portfolio-details-slider { 
+        width: 100%; 
+        height: 500px; /* Altura bloqueada para estabilidad */
+        border-radius: 15px; 
+        border: 1px solid #333; 
+        overflow: hidden; 
+        background: #080808; 
+        position: relative;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .swiper-slide img { 
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* Ajusta la imagen al contenedor sin mover el layout */
+    }
+
+    .swiper-pagination-bullet-active { background: #5D9DAF !important; }
+  </style>
+</head>
+
+<body>
+  <main id="main">
+    <section class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="../assets/img/portfolio/pag-web-lab/esthec-1.jpg" alt="Prueba Esthetics"></div>
+                <div class="swiper-slide"><img src="../assets/img/portfolio/pag-web-lab/gym1.jpg" alt="Prueba Gym"></div>
+                <div class="swiper-slide"><img src="../assets/img/portfolio/pag-web-lab/tps-1.jpg" alt="Prueba TPS"></div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>WordPress CMS Lab</h3>
+              <ul>
+                <li><strong>Finalidad:</strong> Pruebas & Prototipado</li>
+                <li><strong>Entorno:</strong> Laboratorio de Desarrollo (Local)</li>
+                <li><strong>Tecnologías:</strong> WordPress, Elementor, PHP</li>
+                <li><strong>Estado:</strong> No destinado a producción</li>
+              </ul>
+              <a href="../index.html#portfolio" class="btn-back">← Volver</a>
+            </div>
+            
+            <div class="portfolio-description">
+              <h2>Exploración de Ecosistemas Web</h2>
+              <p>
+                Este proyecto recopila diversas pruebas de concepto realizadas para explorar las capacidades de personalización de WordPress. El enfoque principal fue validar flujos de diseño y la gestión de contenidos.
+              </p>
+              <p>
+                <strong>Objetivo del Lab:</strong> Evaluar la flexibilidad de diferentes temas y builders para adaptarse a requisitos corporativos específicos, asegurando que el resultado final sea funcional y fácilmente gestionable en un entorno de pruebas controlado.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.portfolio-details-slider', {
+        speed: 800, 
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    });
+  </script>
+</body>
+</html>
