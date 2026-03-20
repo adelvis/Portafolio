@@ -5,9 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Desarrolladora Web Adelvis</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Adelvis Uzcategui | Software Solution Architect & Senior Developer</title>
+  <meta content="Software Architect y Desarrolladora Senior con 20 años de experiencia en soluciones B2B, Laravel e Inteligencia Artificial. Experta en digitalización de procesos complejos en Venezuela y remoto." name="description">
+  <meta content="Software Architect, Laravel, IA, Inteligencia Artificial, Desarrollo Web Venezuela, B2B Solutions, Senior Developer, Adelvis Uzcategui, CMT LAB PRO" name="keywords">
+
+  <meta property="og:title" content="Adelvis Uzcategui | Software Solution Architect">
+  <meta property="og:description" content="Más de 20 años transformando lógica de negocio compleja en soluciones digitales escalables.">
+  <meta property="og:image" content="assets/img/profile-img.png"> <meta property="og:url" content="https://adelvis.github.io/Portafolio/">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.ico" rel="icon">
@@ -391,45 +395,68 @@
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container">
-
+  
       <div class="section-title">
         <h2>Contacto</h2>
-        <p>Contactame</p>
+        <p>Hablemos de tu próximo proyecto</p>
       </div>
-
-      <div class="row mt-2">
-
-
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+  
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-share-alt"></i>
-            <h3>Perfiles sociales</h3>
+            <h3>Redes Profesionales</h3>
             <div class="social-links">
               <a href="https://github.com/adelvis" target="_blank" class="github"><i class="bi bi-github"></i></a>
-              <!--<a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
-              <a href="https://www.linkedin.com/in/adelvis-uzcategui-581057103/" target="_blank" class="linkedin"><i
-                  class="bi bi-linkedin"></i></a>
-
+              <a href="https://www.linkedin.com/in/adelvis-uzcategui-581057103/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://wa.me/584241390891" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
             </div>
           </div>
         </div>
-
+  
         <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-envelope"></i>
             <h3>Email</h3>
-
             <p>adelvisu@gmail.com</p>
-
-
           </div>
         </div>
-
       </div>
-
+      
+      <div class="row mt-4">
+        <div class="col-12">
+          <!-- IMPORTANTE: Mantener la clase php-email-form para el script personalizado -->
+          <form action="https://formspree.io/f/mojkrbgv" method="POST" id="contact-form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" placeholder="Tu Nombre" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" placeholder="Tu Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" placeholder="Asunto" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Enviando mensaje...</div>
+              <div class="error-message"></div>
+              <div class="sent-message">¡Tu mensaje ha sido enviado exitosamente! Me pondré en contacto contigo pronto.</div>
+            </div>
+            <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
+          </form>
+        </div>
+      </div>
     </div>
-  </section><!-- End Contact Section -->
+    
+  
+    </div>
+  </section>
+
+  <!-- End Contact Section -->
 
   <div class="credits">
     <!-- All the links in the footer should remain intact. -->
@@ -446,10 +473,59 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+      const contactForm = document.getElementById('contact-form') || document.querySelector('.php-email-form');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const loading = contactForm.querySelector('.loading');
+          const sentMessage = contactForm.querySelector('.sent-message');
+          const errorMessage = contactForm.querySelector('.error-message');
+          
+          // Configuración visual inicial
+          loading.style.display = 'block';
+          sentMessage.style.display = 'none';
+          errorMessage.style.display = 'none';
+
+          const formData = new FormData(contactForm);
+          
+          try {
+            const response = await fetch(contactForm.action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+
+            loading.style.display = 'none';
+
+            if (response.ok) {
+              // Caso de éxito
+              sentMessage.style.display = 'block';
+              contactForm.reset();
+            } else {
+              // Caso de error de validación de Formspree
+              const data = await response.json();
+              errorMessage.innerHTML = data.errors ? data.errors.map(error => error.message).join(", ") : "Ocurrió un error al enviar el mensaje.";
+              errorMessage.style.display = 'block';
+            }
+          } catch (error) {
+            // Caso de error de red
+            loading.style.display = 'none';
+            errorMessage.innerHTML = "Error de conexión. Por favor, intenta de nuevo o contacta por WhatsApp.";
+            errorMessage.style.display = 'block';
+          }
+        });
+      }
+    
+  </script>
 
 </body>
 
